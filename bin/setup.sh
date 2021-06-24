@@ -13,10 +13,15 @@ PROJ_PKG=(build-essential
      curl
      tar
      screen
-     clang-13
-     lld-11
+     clang-12
+     lld-12
+     lldb-12
      linux-image-extra-virtual)
 QEMU_DEP=(libglib2.0-dev libpixman-1-dev zlib1g-dev)
+
+# Required for clang pkgs
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
+sudo apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-12 main"
 
 # install pkgs
 if [[ $($BIN/get-dist) == "ubuntu" ]]; then
